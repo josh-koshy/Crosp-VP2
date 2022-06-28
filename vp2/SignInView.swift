@@ -87,18 +87,7 @@ struct SignInView: View {
             }
         }
     }
-    
-    
-    //func fetchData() {
-    //        Task.init {
-    //            do {
-    //                self.images = try await fetchImages()
-    //            } catch {
-    //                // .. handle error
-    //            }
-    //        }
-    //    }
-    
+
     
     
     struct SignInViewPreview: PreviewProvider {
