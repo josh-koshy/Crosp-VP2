@@ -79,16 +79,10 @@ struct SignInView: View {
 }
 
 
-
-
-
-
 struct SignInViewPreview: PreviewProvider {
     static var previews: some View {
         SignInView()
     }
 }
-
-
 
 

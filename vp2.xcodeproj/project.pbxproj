@@ -99,7 +99,6 @@
 		033D676C286A18A7005D7EE9 = {
 			isa = PBXGroup;
 			children = (
-				033D67AC286B3350005D7EE9 /* CustomAnimations.swift */,
 				033D6777286A18A7005D7EE9 /* vp2 */,
 				033D6788286A18A9005D7EE9 /* vp2Tests */,
 				033D6792286A18AA005D7EE9 /* vp2UITests */,
@@ -122,6 +121,7 @@
 		033D6777286A18A7005D7EE9 /* vp2 */ = {
 			isa = PBXGroup;
 			children = (
+				033D67AC286B3350005D7EE9 /* CustomAnimations.swift */,
 				033D67AA286A7F61005D7EE9 /* SignInView.swift */,
 				033D67A8286A4EDD005D7EE9 /* HapticView.swift */,
 				033D67A2286A1920005D7EE9 /* GoogleService-Info.plist */,
