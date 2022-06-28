@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HapticView : View {
     @State private var ShowView1 = false
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var body: some View {
         
         NavigationView {
@@ -35,7 +36,7 @@ struct HapticView : View {
                 Button{ print("Press Recorded") } label: { Text("Hold to Go Back Bruh...") }
                     .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in
                     softHaptic()
-                    self.ShowView1 = true
+                    mode.wrappedValue.dismiss()
                     print("The button was held...")
                 })
                 

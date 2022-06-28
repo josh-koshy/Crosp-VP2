@@ -20,6 +20,7 @@ struct SignInView: View {
     @State var signInMode = false
     @State var failCount: Int = 0
     @State var attempts: Int = 0
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
         NavigationView{
@@ -38,7 +39,9 @@ struct SignInView: View {
                 SecureField("Password", text: $password)
                 Divider()
                 
-                Button(action: { login() } ) {
+                Button(action: {!signInMode ? login() : mode.wrappedValue.dismiss()
+                    
+} ) {
                     HStack {
                         !signInMode ? Text("Sign In").foregroundColor(Color.red).font(.title).bold() :
                         Text("Sign Up").foregroundColor(Color.red).font(.title).bold()
@@ -54,15 +57,18 @@ struct SignInView: View {
                     Text("By Creating an Account, you agree with all Crosp Legal Terms.")
                         .font(.caption)
                     Text("In this version of the app, Sign Up will not work.")
+                    Text("Pressing Sign-Up will send you back.")
                         .font(.caption)
                 }
                 
                 
                 if isFailed == true {
-                    Text("Incorrect Password, please try again.")
-                        .foregroundColor(Color.red)
-                        .frame(height: 4.0)
-                    //   Animation() { self.attempts += 1 }
+                    if !signInMode {
+                        Text("Incorrect Password, please try again.")
+                            .foregroundColor(Color.red)
+                            .frame(height: 4.0)
+                        //   Animation() { self.attempts += 1 }
+                    }
                 }
                 else {
                     NavigationLink(destination: Text("Success Buddy, you're in."), isActive: $isAuthed) { EmptyView() }
