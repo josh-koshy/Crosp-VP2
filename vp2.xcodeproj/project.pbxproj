@@ -124,10 +124,10 @@
 				033D67AC286B3350005D7EE9 /* CustomAnimations.swift */,
 				033D67AA286A7F61005D7EE9 /* SignInView.swift */,
 				033D67A8286A4EDD005D7EE9 /* HapticView.swift */,
-				033D67A2286A1920005D7EE9 /* GoogleService-Info.plist */,
 				033D6778286A18A7005D7EE9 /* vp2App.swift */,
 				033D67A4286A49FA005D7EE9 /* HomeView.swift */,
 				033D67A6286A4D5F005D7EE9 /* HapticManagement.swift */,
+				033D67A2286A1920005D7EE9 /* GoogleService-Info.plist */,
 				033D677C286A18A9005D7EE9 /* Assets.xcassets */,
 				033D677E286A18A9005D7EE9 /* Preview Content */,
 			);

@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import SwiftUI
 
+
+//errorshake:
 struct Shake: GeometryEffect {
     var amount: CGFloat = 10
     var shakesPerUnit = 3
