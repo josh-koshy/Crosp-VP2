@@ -9,25 +9,21 @@ import Foundation
 import SwiftUI
 import FirebaseAuth
 
-
-
-
 struct SignInView: View {
     @State var email = ""
     @State var password = ""
     @State var isAuthed = false
     @State var isFailed = false
-    @State var signInMode = false
+    @State var isSignUp = false
     @State var failCount: Int = 0
     @State var attempts: Int = 0
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
-        NavigationView{
-            
+        NavigationView {
             VStack(spacing: 30) {
                 
-                Picker("Flavor", selection: $signInMode) {
+                Picker("Flavor", selection: $isSignUp) {
                     Text("Sign In").tag(false)
                     Text("Sign Up").tag(true)
                 }.pickerStyle(.segmented)
@@ -39,11 +35,11 @@ struct SignInView: View {
                 SecureField("Password", text: $password)
                 Divider()
                 
-                Button(action: {!signInMode ? login() : mode.wrappedValue.dismiss()
+                Button(action: {!isSignUp ? login() : mode.wrappedValue.dismiss()
                     
 } ) {
                     HStack {
-                        !signInMode ? Text("Sign In").foregroundColor(Color.red).font(.title).bold() :
+                        !isSignUp ? Text("Sign In").foregroundColor(Color.red).font(.title).bold() :
                         Text("Sign Up").foregroundColor(Color.red).font(.title).bold()
                     }
                     .padding(.horizontal, 80)
@@ -52,30 +48,26 @@ struct SignInView: View {
                     .cornerRadius(10.0)
                     .modifier(Shake(animatableData: CGFloat(attempts)))
                 }
-                
-                if signInMode == true {
-                    Text("By Creating an Account, you agree with all Crosp Legal Terms.")
-                        .font(.caption)
-                    Text("In this version of the app, Sign Up will not work.")
-                    Text("Pressing Sign-Up will send you back.")
-                        .font(.caption)
+                if isSignUp == true {
+                    Text("By Creating an Account, you agree with all Crosp Legal Terms. In this version of the app, Sign Up will not work. This is intentional: pressing Sign-Up will send you back.").font(.subheadline)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding()
                 }
-                
-                
                 if isFailed == true {
-                    if !signInMode {
+                    if !isSignUp {
                         Text("Incorrect Password, please try again.")
                             .foregroundColor(Color.red)
                             .frame(height: 4.0)
                         //   Animation() { self.attempts += 1 }
                     }
                 }
-                else {
-                    NavigationLink(destination: Text("Success Buddy, you're in."), isActive: $isAuthed) { EmptyView() }
-                }
-                
+                // move to an authenticated screen
+                NavigationLink(destination: HapticView(), isActive: $isAuthed) { EmptyView() }
+                Spacer()
             }
             .padding()
+            .navigationTitle(!isSignUp ? "Crosp Log-In" : "Crosp Sign-Up")
+
         }
     }
     
