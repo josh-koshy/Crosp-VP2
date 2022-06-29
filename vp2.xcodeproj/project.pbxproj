@@ -19,6 +19,8 @@
 		033D67A9286A4EDD005D7EE9 /* HapticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67A8286A4EDD005D7EE9 /* HapticView.swift */; };
 		033D67AB286A7F61005D7EE9 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67AA286A7F61005D7EE9 /* SignInView.swift */; };
 		033D67AD286B3350005D7EE9 /* CustomAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67AC286B3350005D7EE9 /* CustomAnimations.swift */; };
+		03FA189C286C14D70013677A /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA189B286C14D70013677A /* UserInfoView.swift */; };
+		03FA189E286C16290013677A /* FireBaseUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA189D286C16290013677A /* FireBaseUsers.swift */; };
 		68798B0F897D86D3EF31EDAE /* Pods_vp2_vp2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4BD100605305812679C222 /* Pods_vp2_vp2UITests.framework */; };
 		72E70794B12FDD51206A4015 /* Pods_vp2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE2E8AA3900C892F540D1F6 /* Pods_vp2Tests.framework */; };
 		8858C87B311FF9156C0C4826 /* Pods_vp2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAFBD821EBBD5477B756463 /* Pods_vp2.framework */; };
@@ -57,6 +59,8 @@
 		033D67A8286A4EDD005D7EE9 /* HapticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticView.swift; sourceTree = "<group>"; };
 		033D67AA286A7F61005D7EE9 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		033D67AC286B3350005D7EE9 /* CustomAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimations.swift; sourceTree = "<group>"; };
+		03FA189B286C14D70013677A /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		03FA189D286C16290013677A /* FireBaseUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseUsers.swift; sourceTree = "<group>"; };
 		2701E4D4FB07966E2B4C5C04 /* Pods-vp2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vp2Tests.debug.xcconfig"; path = "Target Support Files/Pods-vp2Tests/Pods-vp2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C774A01660501CD8395639A /* Pods-vp2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vp2.debug.xcconfig"; path = "Target Support Files/Pods-vp2/Pods-vp2.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4BD100605305812679C222 /* Pods_vp2_vp2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vp2_vp2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +125,8 @@
 		033D6777286A18A7005D7EE9 /* vp2 */ = {
 			isa = PBXGroup;
 			children = (
+				03FA189B286C14D70013677A /* UserInfoView.swift */,
+				03FA189D286C16290013677A /* FireBaseUsers.swift */,
 				033D67AC286B3350005D7EE9 /* CustomAnimations.swift */,
 				033D67AA286A7F61005D7EE9 /* SignInView.swift */,
 				033D67A8286A4EDD005D7EE9 /* HapticView.swift */,
@@ -422,6 +428,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				033D67A7286A4D5F005D7EE9 /* HapticManagement.swift in Sources */,
+				03FA189E286C16290013677A /* FireBaseUsers.swift in Sources */,
+				03FA189C286C14D70013677A /* UserInfoView.swift in Sources */,
 				033D67A9286A4EDD005D7EE9 /* HapticView.swift in Sources */,
 				033D67A5286A49FA005D7EE9 /* HomeView.swift in Sources */,
 				033D67AD286B3350005D7EE9 /* CustomAnimations.swift in Sources */,

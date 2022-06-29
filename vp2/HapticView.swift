@@ -7,8 +7,10 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
 struct HapticView : View {
+    @State var cool: String
     @State private var ShowView1 = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var body: some View {
@@ -17,6 +19,19 @@ struct HapticView : View {
             VStack(spacing: 30) {
                 let holdDuration: Double = 0.5
                 NavigationLink(destination: HomeView(), isActive: $ShowView1) { EmptyView() }
+                
+                Button{
+                    Check()
+                } label: {
+                    Text("Am I Authed?")
+                }
+                
+                if cool != "" {
+                    Divider()
+                    Text("UID: \(cool)")
+                    .font(.caption)
+                    
+                }
                 
                 
                 Button { successHaptic() } label: { Text("Success") }
@@ -44,11 +59,24 @@ struct HapticView : View {
         }.navigationBarBackButtonHidden(true) // end of NavigationView
     }
     
+    func Check() {
+        if Auth.auth().currentUser != nil {
+            let user = Auth.auth().currentUser
+            if let user = user {
+                // The user's ID, unique to the Firebase project.
+                // Do NOT use this value to authenticate with your backend server,
+                // if you have one. Use getTokenWithCompletion:completion: instead.
+                self.cool = user.uid
+            }
+            
+        }
+    }
+    
     }
 
 
 struct SecondaryViewPreview: PreviewProvider {
     static var previews: some View {
-        HapticView()
+        HapticView(cool: "")
     }
 }

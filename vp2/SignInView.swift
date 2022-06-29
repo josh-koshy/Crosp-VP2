@@ -17,6 +17,7 @@ struct SignInView: View {
     @State var isSignUp = false
     @State var failCount: Int = 0
     @State var attempts: Int = 0
+    @State var uid = ""
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
@@ -63,7 +64,7 @@ struct SignInView: View {
                         }
                     }
                     // move to an authenticated screen
-                    NavigationLink(destination: HapticView(), isActive: $isAuthed) { EmptyView() }
+                    NavigationLink(destination: HapticView(cool: uid), isActive: $isAuthed) { EmptyView() }
                     Spacer()
                 }
                 .padding()
@@ -84,17 +85,27 @@ struct SignInView: View {
                 }
                 errorHaptic()
             } else {
-                print("success")
+                if Auth.auth().currentUser != nil {
+                    let user = Auth.auth().currentUser
+                    if let user = user {
+                        // The user's ID, unique to the Firebase project.
+                        // Do NOT use this value to authenticate with your backend server,
+                        // if you have one. Use getTokenWithCompletion:completion: instead.
+                        self.uid = user.uid
+                    }
+                    
+                }
                 self.isAuthed = true
+                }
+            }
+            
+            
+            
+            
+            struct SignInViewPreview: PreviewProvider {
+                static var previews: some View {
+                    SignInView()
+                }
             }
         }
     }
-
-    
-    
-    struct SignInViewPreview: PreviewProvider {
-        static var previews: some View {
-            SignInView()
-        }
-    }
-}
