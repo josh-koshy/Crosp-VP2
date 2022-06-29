@@ -21,52 +21,54 @@ struct SignInView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 30) {
-                
-                Picker("Flavor", selection: $isSignUp) {
-                    Text("Sign In").tag(false)
-                    Text("Sign Up").tag(true)
-                }.pickerStyle(.segmented)
-                
-                TextField("Email", text: $email).keyboardType(.emailAddress)
-                    .textContentType(.emailAddress)
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                SecureField("Password", text: $password)
-                Divider()
-                
-                Button(action: {!isSignUp ? login() : mode.wrappedValue.dismiss()
+            ScrollView {
+                VStack(spacing: 30) {
                     
-} ) {
-                    HStack {
-                        !isSignUp ? Text("Sign In").foregroundColor(Color.red).font(.title).bold() :
-                        Text("Sign Up").foregroundColor(Color.red).font(.title).bold()
+                    Picker("Flavor", selection: $isSignUp) {
+                        Text("Sign In").tag(false)
+                        Text("Sign Up").tag(true)
+                    }.pickerStyle(.segmented)
+                    
+                    TextField("Email", text: $email).keyboardType(.emailAddress)
+                        .textContentType(.emailAddress)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                    SecureField("Password", text: $password)
+                    Divider()
+                    
+                    Button(action: {!isSignUp ? login() : mode.wrappedValue.dismiss()
+                        
+                    } ) {
+                        HStack {
+                            !isSignUp ? Text("Sign In").foregroundColor(Color.red).font(.title).bold() :
+                            Text("Sign Up").foregroundColor(Color.red).font(.title).bold()
+                        }
+                        .padding(.horizontal, 80)
+                        .padding(.vertical, 20)
+                        .background(Color.black)
+                        .cornerRadius(10.0)
+                        .modifier(Shake(animatableData: CGFloat(attempts)))
                     }
-                    .padding(.horizontal, 80)
-                    .padding(.vertical, 20)
-                    .background(Color.black)
-                    .cornerRadius(10.0)
-                    .modifier(Shake(animatableData: CGFloat(attempts)))
-                }
-                if isSignUp == true {
-                    Text("By Creating an Account, you agree with all Crosp Legal Terms. In this version of the app, Sign Up will not work. This is intentional: pressing Sign-Up will send you back.").font(.subheadline)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding()
-                }
-                if isFailed == true {
-                    if !isSignUp {
-                        Text("Incorrect Password, please try again.")
-                            .foregroundColor(Color.red)
-                            .frame(height: 4.0)
-                        //   Animation() { self.attempts += 1 }
+                    if isSignUp == true {
+                        Text("By Creating an Account, you agree with all Crosp Legal Terms. In this version of the app, Sign Up will not work. This is intentional: pressing Sign-Up will send you back.").font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding()
                     }
+                    if isFailed == true {
+                        if !isSignUp {
+                            Text("Incorrect Password, please try again.")
+                                .foregroundColor(Color.red)
+                                .frame(height: 4.0)
+                            //   Animation() { self.attempts += 1 }
+                        }
+                    }
+                    // move to an authenticated screen
+                    NavigationLink(destination: HapticView(), isActive: $isAuthed) { EmptyView() }
+                    Spacer()
                 }
-                // move to an authenticated screen
-                NavigationLink(destination: HapticView(), isActive: $isAuthed) { EmptyView() }
-                Spacer()
-            }
-            .padding()
-            .navigationTitle(!isSignUp ? "Crosp Log-In" : "Crosp Sign-Up")
+                .padding()
+                .navigationTitle(!isSignUp ? "Crosp Log-In" : "Crosp Sign-Up")
+            }.ignoresSafeArea(.keyboard)
 
         }
     }
