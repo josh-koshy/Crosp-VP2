@@ -13,6 +13,8 @@ struct HapticView : View {
     @State var cool: String
     @State private var ShowView1 = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var SignMeIn = false
+    @State var PressedSignMeInCount:Int = 0
     var body: some View {
         
         NavigationView {
@@ -22,57 +24,81 @@ struct HapticView : View {
                 
                 Button{
                     Check()
+                    if cool == "" {
+                        self.SignMeIn = true
+                    }
+                    else {
+                        withAnimation(.default) {
+                            self.PressedSignMeInCount += 1
+                        errorHaptic()
+                        }
+                    }
+                    
                 } label: {
                     Text("Am I Authed?")
                 }
                 
                 if cool != "" {
                     Divider()
-                    Text("UID: \(cool)")
+                    VStack{
+                        Text("You are authenticated.")
+                        Text("UID: \(cool)")
+                            
+                    }.font(.caption).modifier(Shake(animatableData: CGFloat(PressedSignMeInCount)))
+                    
+                    
+                } else {
+                    Divider()
+                    Text("You are not signed in.")
                     .font(.caption)
                     
                 }
                 
-                
-                Button { successHaptic() } label: { Text("Success") }
-                    .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in softHaptic() ; print("The button was held...") })
-                
-                
-                
-                Button { errorHaptic() } label: { Text("Error") }
-                    .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in softHaptic() ; print("The button was held...") })
-                
-                Button { warningHaptic() } label: { Text("Warning") }
-                    .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in softHaptic() ; print("The button was held...") })
+                Button { successHaptic() } label: { Text("Hold to Log Out") }
+                    .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in softHaptic() ; SignOut() ; Check() })
                 
                 
                 Divider()
+                
+                NavigationLink(destination: SignInView(), isActive: $SignMeIn) { EmptyView() }
                 
                 Button{ print("Press Recorded") } label: { Text("Hold to Go Back Bruh...") }
                     .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in
                     softHaptic()
                     mode.wrappedValue.dismiss()
-                    print("The button was held...")
+                        
                 })
                 
             } // end of VStack
-        }.navigationBarBackButtonHidden(true) // end of NavigationView
+            
+        }.navigationBarBackButtonHidden(true)
+            .onAppear{
+                Check()
+            }
+        // end of NavigationView
     }
     
     func Check() {
         if Auth.auth().currentUser != nil {
             let user = Auth.auth().currentUser
             if let user = user {
-                // The user's ID, unique to the Firebase project.
-                // Do NOT use this value to authenticate with your backend server,
-                // if you have one. Use getTokenWithCompletion:completion: instead.
                 self.cool = user.uid
             }
-            
+        }
+        else {
+            self.cool = ""
         }
     }
-    
+}
+
+func SignOut() {
+    let firebaseAuth = Auth.auth()
+    do {
+      try firebaseAuth.signOut()
+    } catch let signOutError as NSError {
+      print("Error signing out: %@", signOutError)
     }
+}
 
 
 struct SecondaryViewPreview: PreviewProvider {

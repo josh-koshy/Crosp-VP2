@@ -18,6 +18,7 @@ struct SignInView: View {
     @State var failCount: Int = 0
     @State var attempts: Int = 0
     @State var uid = ""
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
@@ -79,22 +80,11 @@ struct SignInView: View {
             if error != nil {
                 print(error?.localizedDescription ?? "")
                 self.isFailed = true
-                self.failCount += 1
                 withAnimation(.default) {
                     self.attempts += 1
                 }
                 errorHaptic()
             } else {
-                if Auth.auth().currentUser != nil {
-                    let user = Auth.auth().currentUser
-                    if let user = user {
-                        // The user's ID, unique to the Firebase project.
-                        // Do NOT use this value to authenticate with your backend server,
-                        // if you have one. Use getTokenWithCompletion:completion: instead.
-                        self.uid = user.uid
-                    }
-                    
-                }
                 self.isAuthed = true
                 }
             }
