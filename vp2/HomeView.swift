@@ -35,7 +35,7 @@ struct HomeView: View {
                 
                 Divider()
                 
-                NavigationLink(destination: HapticView(cool: ""), isActive: $ShowHapticView) { EmptyView() }
+                NavigationLink(destination: HapticView(cool: "", email: ""), isActive: $ShowHapticView) { EmptyView() }
                 NavigationLink(destination: SignInView(), isActive: $ShowSignInView) { EmptyView() }
                 
                 

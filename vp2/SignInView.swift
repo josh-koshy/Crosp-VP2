@@ -65,7 +65,7 @@ struct SignInView: View {
                         }
                     }
                     // move to an authenticated screen
-                    NavigationLink(destination: HapticView(cool: uid), isActive: $isAuthed) { EmptyView() }
+                    NavigationLink(destination: HapticView(cool: uid, email: ""), isActive: $isAuthed) { EmptyView() }
                     Spacer()
                 }
                 .padding()

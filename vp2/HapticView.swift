@@ -11,6 +11,7 @@ import FirebaseAuth
 
 struct HapticView : View {
     @State var cool: String
+    @State var email: String
     @State private var ShowView1 = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var SignMeIn = false
@@ -43,6 +44,7 @@ struct HapticView : View {
                     VStack{
                         Text("You are authenticated.")
                         Text("UID: \(cool)")
+                        Text("Email: \(self.email)")
                             
                     }.font(.caption).modifier(Shake(animatableData: CGFloat(PressedSignMeInCount)))
                     
@@ -83,6 +85,11 @@ struct HapticView : View {
             let user = Auth.auth().currentUser
             if let user = user {
                 self.cool = user.uid
+                if let email = user.email {
+                    self.email = email
+                } else {
+                    print("Missing name.")
+                }
             }
         }
         else {
@@ -103,6 +110,6 @@ func SignOut() {
 
 struct SecondaryViewPreview: PreviewProvider {
     static var previews: some View {
-        HapticView(cool: "")
+        HapticView(cool: "", email: "")
     }
 }
