@@ -22,7 +22,7 @@ struct vp2App: App {
   var body: some Scene {
     WindowGroup {
       NavigationView {
-        HomeView()
+          MainScreenView(uid: "", email: "")
       }
     }
   }

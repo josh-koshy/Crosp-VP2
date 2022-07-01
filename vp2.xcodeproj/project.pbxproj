@@ -16,7 +16,7 @@
 		033D67A3286A1920005D7EE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 033D67A2286A1920005D7EE9 /* GoogleService-Info.plist */; };
 		033D67A5286A49FA005D7EE9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67A4286A49FA005D7EE9 /* HomeView.swift */; };
 		033D67A7286A4D5F005D7EE9 /* HapticManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67A6286A4D5F005D7EE9 /* HapticManagement.swift */; };
-		033D67A9286A4EDD005D7EE9 /* HapticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67A8286A4EDD005D7EE9 /* HapticView.swift */; };
+		033D67A9286A4EDD005D7EE9 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67A8286A4EDD005D7EE9 /* MainScreenView.swift */; };
 		033D67AB286A7F61005D7EE9 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67AA286A7F61005D7EE9 /* SignInView.swift */; };
 		033D67AD286B3350005D7EE9 /* CustomAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D67AC286B3350005D7EE9 /* CustomAnimations.swift */; };
 		03FA189C286C14D70013677A /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA189B286C14D70013677A /* UserInfoView.swift */; };
@@ -56,7 +56,7 @@
 		033D67A2286A1920005D7EE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		033D67A4286A49FA005D7EE9 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		033D67A6286A4D5F005D7EE9 /* HapticManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManagement.swift; sourceTree = "<group>"; };
-		033D67A8286A4EDD005D7EE9 /* HapticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticView.swift; sourceTree = "<group>"; };
+		033D67A8286A4EDD005D7EE9 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		033D67AA286A7F61005D7EE9 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		033D67AC286B3350005D7EE9 /* CustomAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimations.swift; sourceTree = "<group>"; };
 		03FA189B286C14D70013677A /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 				03FA189D286C16290013677A /* FireBaseUsers.swift */,
 				033D67AC286B3350005D7EE9 /* CustomAnimations.swift */,
 				033D67AA286A7F61005D7EE9 /* SignInView.swift */,
-				033D67A8286A4EDD005D7EE9 /* HapticView.swift */,
+				033D67A8286A4EDD005D7EE9 /* MainScreenView.swift */,
 				033D6778286A18A7005D7EE9 /* vp2App.swift */,
 				033D67A4286A49FA005D7EE9 /* HomeView.swift */,
 				033D67A6286A4D5F005D7EE9 /* HapticManagement.swift */,
@@ -430,7 +430,7 @@
 				033D67A7286A4D5F005D7EE9 /* HapticManagement.swift in Sources */,
 				03FA189E286C16290013677A /* FireBaseUsers.swift in Sources */,
 				03FA189C286C14D70013677A /* UserInfoView.swift in Sources */,
-				033D67A9286A4EDD005D7EE9 /* HapticView.swift in Sources */,
+				033D67A9286A4EDD005D7EE9 /* MainScreenView.swift in Sources */,
 				033D67A5286A49FA005D7EE9 /* HomeView.swift in Sources */,
 				033D67AD286B3350005D7EE9 /* CustomAnimations.swift in Sources */,
 				033D6779286A18A7005D7EE9 /* vp2App.swift in Sources */,

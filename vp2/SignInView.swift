@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 import FirebaseAuth
 
+
+
+
 struct SignInView: View {
     @State var email = ""
     @State var password = ""
@@ -62,10 +65,11 @@ struct SignInView: View {
                                 .foregroundColor(Color.red)
                                 .frame(height: 4.0)
                             //   Animation() { self.attempts += 1 }
+                            
                         }
                     }
                     // move to an authenticated screen
-                    NavigationLink(destination: HapticView(cool: uid, email: ""), isActive: $isAuthed) { EmptyView() }
+                    NavigationLink(destination: MainScreenView(uid: uid, email: ""), isActive: $isAuthed) { EmptyView() }
                     Spacer()
                 }
                 .padding()
@@ -85,7 +89,8 @@ struct SignInView: View {
                 }
                 errorHaptic()
             } else {
-                self.isAuthed = true
+                OverlayContainer.isAuthed = true
+                mode.wrappedValue.dismiss()
                 }
             }
             
