@@ -60,7 +60,6 @@ struct MainScreenView : View {
                     Text("Sign-In Page ->")
                 }
                 
-                
                 if uid != "" {
                     Divider()
                     VStack{
@@ -78,11 +77,11 @@ struct MainScreenView : View {
                     
                 }
                 
-                
-                Button { } label: { Text("Hold to Log Out") }
-                    .modifier(Shake(animatableData: CGFloat(PressedSignMeInCount)))
-                    .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in softHaptic() ; SignOut() ; Check() })
-                
+                if uid != "" {
+                    Button { } label: { Text("Hold to Log Out") }
+                        .modifier(Shake(animatableData: CGFloat(PressedSignMeInCount)))
+                        .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in softHaptic() ; SignOut() ; Check() })
+                }
                 
                 Divider()
                 

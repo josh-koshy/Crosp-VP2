@@ -16,7 +16,7 @@ struct SignInView: View {
     @State var email = ""
     @State var password = ""
     @State var isAuthed = false
-    @State var isFailed = false
+    @State var hasLoginFailed = false
     @State var isSignUp = false
     @State var failCount: Int = 0
     @State var attempts: Int = 0
@@ -41,7 +41,7 @@ struct SignInView: View {
                     SecureField("Password", text: $password)
                     Divider()
                     
-                    Button(action: {!isSignUp ? login() : mode.wrappedValue.dismiss()
+                    Button(action: {!isSignUp ? login() : SignUp()
                         
                     } ) {
                         HStack {
@@ -54,12 +54,13 @@ struct SignInView: View {
                         .cornerRadius(10.0)
                         .modifier(Shake(animatableData: CGFloat(attempts)))
                     }
+                    
                     if isSignUp == true {
-                        Text("By Creating an Account, you agree with all Crosp Legal Terms. In this version of the app, Sign Up will not work. This is intentional: pressing Sign-Up will send you back.").font(.subheadline)
+                        Text("By Creating an Account, you agree with all Crosp Legal Terms.").font(.caption)
                             .fixedSize(horizontal: false, vertical: true)
                             .padding()
                     }
-                    if isFailed == true {
+                    if hasLoginFailed == true {
                         if !isSignUp {
                             Text("Incorrect Password, please try again.")
                                 .foregroundColor(Color.red)
@@ -75,32 +76,46 @@ struct SignInView: View {
                 .padding()
                 .navigationTitle(!isSignUp ? "Crosp Log-In" : "Crosp Sign-Up")
             }.ignoresSafeArea(.keyboard)
-
+            
         }
     }
     
+    
     func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+        Auth.auth().signIn(withEmail: email, password: password) {
+            (result, error) in
             if error != nil {
                 print(error?.localizedDescription ?? "")
-                self.isFailed = true
+                self.hasLoginFailed = true
                 withAnimation(.default) {
                     self.attempts += 1
                 }
                 errorHaptic()
             } else {
-                OverlayContainer.isAuthed = true
                 mode.wrappedValue.dismiss()
-                }
-            }
-            
-            
-            
-            
-            struct SignInViewPreview: PreviewProvider {
-                static var previews: some View {
-                    SignInView()
-                }
             }
         }
     }
+    
+    func SignUp() {
+        Auth.auth().createUser(withEmail: email, password: password) { ( authResult, error) in
+           guard let user = authResult?.user, error == nil else {
+               print(error!.localizedDescription)
+               return
+           }
+            print("Success. UID is: " + user.uid)
+            if let email = user.email {
+                print("Email is: " + email)
+            }
+            
+            mode.wrappedValue.dismiss()
+        }
+    }
+    
+} // END OF STRUCT!!!
+            
+struct SignInViewPreview: PreviewProvider {
+    static var previews: some View {
+        SignInView()
+    }
+}
