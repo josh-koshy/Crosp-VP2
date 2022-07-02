@@ -21,7 +21,6 @@ struct SignInView: View {
     @State var failCount: Int = 0
     @State var attempts: Int = 0
     @State var uid = ""
-    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
@@ -34,16 +33,14 @@ struct SignInView: View {
                         Text("Sign Up").tag(true)
                     }.pickerStyle(.segmented)
                     
-                    TextField("Email", text: $email).keyboardType(.emailAddress)
+                    TextField("Email", text: $email).font(.title)
+                        .keyboardType(.emailAddress)
                         .textContentType(.emailAddress)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
-                    SecureField("Password", text: $password)
+                    SecureField("Password", text: $password).font(.title)
                     Divider()
-                    
-                    Button(action: {!isSignUp ? login() : SignUp()
-                        
-                    } ) {
+                    Button(action: {!isSignUp ? login() : SignUp() } ) {
                         HStack {
                             !isSignUp ? Text("Sign In").foregroundColor(Color.red).font(.title).bold() :
                             Text("Sign Up").foregroundColor(Color.red).font(.title).bold()
@@ -114,7 +111,8 @@ struct SignInView: View {
     
 } // END OF STRUCT!!!
             
-struct SignInViewPreview: PreviewProvider {
+
+struct MainScreenViewPreview: PreviewProvider {
     static var previews: some View {
         SignInView()
     }

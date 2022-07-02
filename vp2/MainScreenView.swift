@@ -57,7 +57,7 @@ struct MainScreenView : View {
                     }
                     
                 } label: {
-                    Text("Sign-In Page ->")
+                    Text("Sign-In Page ->").font(.title2).foregroundStyle(.linearGradient(colors: [.red, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
                 }
                 
                 if uid != "" {
@@ -70,11 +70,6 @@ struct MainScreenView : View {
                     }.font(.caption)
                     
                     
-                } else {
-                    Divider()
-                    Text("You are not signed in.")
-                    .font(.caption)
-                    
                 }
                 
                 if uid != "" {
@@ -83,7 +78,6 @@ struct MainScreenView : View {
                         .simultaneousGesture(LongPressGesture(minimumDuration: holdDuration).onEnded{ _ in softHaptic() ; SignOut() ; Check() })
                 }
                 
-                Divider()
                 
                 NavigationLink(destination: SignInView(), isActive: $SignMeIn) { EmptyView() }
                 
